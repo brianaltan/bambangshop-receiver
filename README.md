@@ -94,3 +94,17 @@ RwLock<> is used because of its behavior, allowing multiple readers to access th
 Rust does not allow direct mutation because of its focus on memory safety and data race prevention in concurrent contexts. Rust enforces thread safety to ensure that state is carefully controlled and to prevent data races in multi-threaded applications. This is why lazy_static was used adheres to Rust's ownership and borrowing rules while still preventing common pitfalls.
 
 #### Reflection Subscriber-2
+
+1. > Have you explored things outside of the steps in the tutorial, for example: src/lib.rs? If not, explain why you did not do so. If yes, explain things that you have learned from those other parts of code.
+
+Yes, `src/lib.rs` serves as the entry point for the library and contains the core logic of the library, including public functions and modules, designed for reusability. On the other hand, `src/main.rs` acts as the entry point for the program and interacts with the components defined in `lib.rs`.
+
+2. > Since you have completed the tutorial by now and have tried to test your notification system by spawning multiple instances of Receiver, explain how Observer pattern eases you to plug in more subscribers. How about spawning more than one instance of Main app, will it still be easy enough to add to the system?
+
+Yes, due to the nature of the Observer pattern, which follows a one-to-many structure, it is very easy to add more subscribers without altering the internal implementation. The flexibility of the design allows the system to handle any number of subscribers within the limits of the data structure.
+
+However, when spawning multiple instances, synchronization issues could arise if the plan is to distribute the load across instances. This is because in a multi-threaded environment, there is a risk of sending duplicate notifications to the same subscriber if proper synchronization is not maintained.
+
+3. > Have you tried to make your own Tests, or enhance documentation on your Postman collection? If you have tried those features, tell us whether it is useful for your work (it can be your tutorial work or your Group Project).
+
+Yes, definitely in my personal projects. It helped me validate API responses using custom tests and allowed me to create clear descriptions and usage instructions. This ensured that my team had the correct information on how to use the API properly.
